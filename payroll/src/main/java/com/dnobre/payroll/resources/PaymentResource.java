@@ -20,17 +20,12 @@ public class PaymentResource {
 
 	@Autowired
 	private PaymentService service;
-	
-	@ApiOperation(value = "${swagger.api.operation.payroll.buscarpagamento.value}", 
-			  notes = "${swagger.api.operation.payroll.buscarpagamento.notes}")
+
+	@ApiOperation(value = "${swagger.api.operation.payroll.buscarpagamento.value}", notes = "${swagger.api.operation.payroll.buscarpagamento.notes}")
 	@GetMapping(value = "/{workerId}/days/{days}")
 	public ResponseEntity<Payment> getPayment(@PathVariable Long workerId, @PathVariable Integer days) {
 		Payment payment = service.getPayment(workerId, days);
 		return ResponseEntity.ok(payment);
-	}	
-	
-//	public ResponseEntity<Payment> getPaymentAlternative(Long workerId, Integer days) {
-//		Payment payment = new Payment("Brann", 400.0, days);
-//		return ResponseEntity.ok(payment);
-//	}
+	}
+
 }
